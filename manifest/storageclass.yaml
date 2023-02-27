@@ -1,0 +1,7 @@
+# kind: StorageClass
+# apiVersion: storage.k8s.io/v1
+# metadata:
+#   name: react-web-local-storage
+#   namespace: 01-webapp-testing 
+# provisioner: kubernetes.io/no-provisioner
+# volumeBindingMode: WaitForFirstConsumer

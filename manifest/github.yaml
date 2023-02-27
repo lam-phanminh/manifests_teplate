@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: lampm-dockerhub
+  namespace: 01-webapp-testing
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImNHaGhibTFwYm1oc1lXMDZVR2hoYm0xcGJtaHNZVzB4UUE9PSIKCQl9Cgl9Cn0K
+

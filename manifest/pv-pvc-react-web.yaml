@@ -1,0 +1,44 @@
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: react-web-pvc
+#   namespace: 01-webapp-testing
+# spec:
+#   storageClassName: react-web-local-storage
+#   accessModes:
+#     - ReadWriteOnce
+#   volumeMode: Filesystem
+#   resources:
+#     requests:
+#       storage: 100Mi
+
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: react-web-pv
+# spec:
+#   storageClassName: react-web-local-storage
+#   local:
+#     path: /mnt/disk/vol1
+#   nodeAffinity:
+#     required:
+#       nodeSelectorTerms:
+#       - matchExpressions:
+#         - key: kubernetes.io/hostname
+#           operator: In
+#           values:
+#           - nodeAffinity:
+#     required:
+#       nodeSelectorTerms:
+#       - matchExpressions:
+#         - key: kubernetes.io/hostname
+#           operator: In
+#           values:
+#           - t-k8s-2021-worker-1
+#   capacity:
+#     storage: 100Mi
+#   volumeMode: Filesystem
+#   accessModes:
+#     - ReadWriteOnce

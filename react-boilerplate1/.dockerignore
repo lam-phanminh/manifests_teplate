@@ -1,0 +1,8 @@
+.git
+.gitignore
+Dockerfile
+Jenkinsfile
+README.md
+LICENSE.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md

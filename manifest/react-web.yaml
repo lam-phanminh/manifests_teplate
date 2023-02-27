@@ -1,0 +1,52 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-web-svc
+  namespace: 01-webapp-testing
+spec:
+  selector:
+    app: react-web
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 80
+  type: ClusterIP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-web
+  namespace: 01-webapp-testing
+spec:
+  selector:
+    matchLabels:
+      app: react-web
+  replicas: 2
+  template: # template for the pods
+    metadata:
+      labels:
+        app: react-web
+    spec:
+      containers:
+      - name: react-web
+        image: phanminhlam/react-app:21
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: react-web-config
+      #   volumeMounts:
+      #   - mountPath: /usr/share/nginx/html
+      #     name: volume-react-web
+      # volumes:
+      # - name: mydir
+      #   hostPath:
+      #     path: /var/local/aaa
+      #     type: DirectoryOrCreate
+      # - name: volume-react-web
+      #   persistentVolumeClaim:
+      #     claimName: react-web-pvc
+      
+      imagePullSecrets:
+        - name: lampm-dockerhub
